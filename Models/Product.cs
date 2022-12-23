@@ -10,6 +10,7 @@ namespace Tec_Assign.Models
         public int Id { set; get; }
         public string Code { set; get; }
         public float Price { set; get; }
+        public float Size { set; get; }
         public int brandId { set; get; }
         public int deviceId { set; get; }
         public Brand brand { set; get; }
