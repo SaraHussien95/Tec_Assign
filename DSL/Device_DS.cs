@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,11 +16,11 @@ namespace Tec_Assign.DSL
         }
         public List<Device> listDevices()
         {
-            return dataContext.Devices.OrderBy(x => x.Id).ToList();
+            return dataContext.Devices.Include(x => x.category).OrderBy(x => x.Id).ToList();
         }
         public Device getDevice(int id)
         {
-            return dataContext.Devices.Where(x => x.Id == id).FirstOrDefault();
+            return dataContext.Devices.Include(x => x.category).Where(x => x.Id == id).FirstOrDefault();
         }
         public void addDevice(Device device)
         {
@@ -28,7 +29,7 @@ namespace Tec_Assign.DSL
         }
         public void updateDevice(Device newDevice, int id)
         {
-            Device updateDevice = dataContext.Devices.Where(x => x.Id == id).FirstOrDefault();
+            Device updateDevice = dataContext.Devices.Include(x => x.category).Where(x => x.Id == id).FirstOrDefault();
             updateDevice.Type = newDevice.Type;
             updateDevice.categoryId = newDevice.categoryId;
 

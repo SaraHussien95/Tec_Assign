@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,11 +16,11 @@ namespace Tec_Assign.DSL
         }
         public List<Brand> listBrand()
         {
-            return dataContext.Brands.OrderBy(x => x.Id).ToList();
+            return dataContext.Brands.Include(x => x.category).OrderBy(x => x.Id).ToList();
         }
         public Brand getBrand(int id)
         {
-            return dataContext.Brands.Where(x => x.Id == id).FirstOrDefault();
+            return dataContext.Brands.Include(x=>x.category).Where(x => x.Id == id).FirstOrDefault();
         }
         public void addBrand(Brand brand)
         {
@@ -28,7 +29,7 @@ namespace Tec_Assign.DSL
         }
         public void updateBrand(Brand newBrand, int id)
         {
-            Brand updateBrand = dataContext.Brands.Where(x => x.Id == id).FirstOrDefault();
+            Brand updateBrand = dataContext.Brands.Include(x => x.category).Where(x => x.Id == id).FirstOrDefault();
             updateBrand.Name = newBrand.Name;
             updateBrand.categoryId = newBrand.categoryId;
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,11 +16,11 @@ namespace Tec_Assign.DSL
         }
         public List<Product> listProduct()
         {
-            return dataContext.Products.OrderBy(x => x.Id).ToList();
+            return dataContext.Products.Include(x => x.brand).Include(x=>x.device).OrderBy(x => x.Id).ToList();
         }
         public Product getProduct(int id)
         {
-            return dataContext.Products.Where(x => x.Id == id).FirstOrDefault();
+            return dataContext.Products.Include(x => x.brand).Include(x => x.device).Where(x => x.Id == id).FirstOrDefault();
         }
         public void addProduct(Product product)
         {
@@ -28,7 +29,7 @@ namespace Tec_Assign.DSL
         }
         public void updateProduct(Product newProduct, int id)
         {
-            Product updateProduct = dataContext.Products.Where(x => x.Id == id).FirstOrDefault();
+            Product updateProduct = dataContext.Products.Include(x => x.brand).Include(x => x.device).Where(x => x.Id == id).FirstOrDefault();
             updateProduct.Code = newProduct.Code;
             updateProduct.Price = newProduct.Price;
             updateProduct.Size = newProduct.Size;
