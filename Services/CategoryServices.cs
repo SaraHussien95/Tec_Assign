@@ -61,5 +61,21 @@ namespace Tec_Assign.Services
             }
             catch { }
         }
+        public void deleteCategory(int id)
+        {
+            try
+            {
+                category_DS.deleteCategory(id);
+            }
+            catch { }
+        }
+        public void deleteAllCategory()
+        {
+            try
+            {
+                category_DS.deleteAllCategories();
+            }
+            catch { }
+        }
     }
 }

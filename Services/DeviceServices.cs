@@ -62,5 +62,21 @@ namespace Tec_Assign.Services
             }
             catch { }
         }
+        public void deleteDevice(int id)
+        {
+            try
+            {
+                device_DS.deleteDevice(id);
+            }
+            catch { }
+        }
+        public void deleteAllDevice()
+        {
+            try
+            {
+                device_DS.deleteAllDevices();
+            }
+            catch { }
+        }
     }
 }

@@ -63,5 +63,17 @@ namespace Tec_Assign.Controllers
                 return View();
             }
         }
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                categoryServices.deleteCategory(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

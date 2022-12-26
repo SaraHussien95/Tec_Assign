@@ -62,5 +62,21 @@ namespace Tec_Assign.Services
             }
             catch { }
         }
+        public void deleteProduct(int id)
+        {
+            try
+            {
+                product_DS.deleteProduct(id);
+            }
+            catch { }
+        }
+        public void deleteAllProduct()
+        {
+            try
+            {
+                product_DS.deleteAllProduct();
+            }
+            catch { }
+        }
     }
 }
