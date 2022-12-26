@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +8,18 @@ using Tec_Assign.Services;
 
 namespace Tec_Assign.Controllers
 {
-    public class BrandController : Controller
+    public class DeviceController : Controller
     {
-        BrandServices brandServices = new BrandServices();
+        DeviceServices deviceServices = new DeviceServices();
         public ActionResult Index()
         {
-            return View(brandServices.listBrands());
+            return View(deviceServices.listDevices());
         }
 
         public ActionResult Details(int id)
         {
-            Brand brand = brandServices.getBrand(id);
-            return View(brand);
+            Device device = deviceServices.getDevice(id);
+            return View(device);
         }
 
         public ActionResult Create()
@@ -30,11 +29,11 @@ namespace Tec_Assign.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Brand brand)
+        public ActionResult Create(Device device)
         {
             try
             {
-                brandServices.addBrand(brand);
+                deviceServices.addDevice(device);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -45,17 +44,17 @@ namespace Tec_Assign.Controllers
 
         public ActionResult Edit(int id)
         {
-            Brand brand = brandServices.getBrand(id);
-            return View(brand);
+            Device device = deviceServices.getDevice(id);
+            return View(device);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Brand updatedBrand)
+        public ActionResult Edit(int id, Device updatedDevice)
         {
             try
             {
-                brandServices.updateBrand(updatedBrand, id);
+                deviceServices.updateDevice(updatedDevice, id);
                 return RedirectToAction(nameof(Index));
             }
             catch
