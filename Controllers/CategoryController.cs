@@ -11,7 +11,11 @@ namespace Tec_Assign.Controllers
 {
     public class CategoryController : Controller
     {
-        CategoryServices categoryServices = new CategoryServices();
+        CategoryServices categoryServices;
+        public CategoryController(DataContext _datacontext)
+        {
+            categoryServices = new CategoryServices(_datacontext);
+        }
         public ActionResult Index()
         {
             return View(categoryServices.listCategories());

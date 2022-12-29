@@ -10,21 +10,20 @@ namespace Tec_Assign.Services
     public class CategoryServices
     {
         public Category_DS category_DS;
-        public DataContext dataContext;
-        public CategoryServices()
+        public CategoryServices( DataContext _dataContext)
         {
-            category_DS = new Category_DS( dataContext );
+            category_DS = new Category_DS(_dataContext );
         }
         public List<Category> listCategories()
         {
+            List<Category> categories = new List<Category>();
             try
             {
-                List<Category> categories = category_DS.listCategory();
+                categories = category_DS.listCategory();
                 return categories;
             }
             catch {
-                return null;
-
+                return categories;
             }
         }
         public Category getCategory(int id)
