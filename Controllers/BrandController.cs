@@ -11,7 +11,11 @@ namespace Tec_Assign.Controllers
 {
     public class BrandController : Controller
     {
-        BrandServices brandServices = new BrandServices();
+        BrandServices brandServices;
+        public BrandController(DataContext _dataContext)
+        {
+            brandServices = new BrandServices(_dataContext);
+        }
         public ActionResult Index()
         {
             return View(brandServices.listBrands());

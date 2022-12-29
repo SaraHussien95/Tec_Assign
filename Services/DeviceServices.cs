@@ -10,8 +10,7 @@ namespace Tec_Assign.Services
     public class DeviceServices
     {
         public Device_DS device_DS;
-        public DataContext dataContext;
-        public DeviceServices()
+        public DeviceServices(DataContext dataContext)
         {
             device_DS = new Device_DS(dataContext);
         }

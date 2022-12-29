@@ -10,7 +10,11 @@ namespace Tec_Assign.Controllers
 {
     public class ProductController : Controller
     {
-        ProductServices productServices = new ProductServices();
+        ProductServices productServices ;
+        public ProductController(DataContext _dataContext)
+        {
+            productServices = new ProductServices(_dataContext);
+        }
         public ActionResult Index()
         {
             return View(productServices.listProducts());

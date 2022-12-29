@@ -10,8 +10,7 @@ namespace Tec_Assign.Services
     public class ProductServices
     {
         public Product_DS product_DS;
-        public DataContext dataContext;
-        public ProductServices()
+        public ProductServices(DataContext dataContext)
         {
             product_DS = new Product_DS(dataContext);
         }

@@ -10,7 +10,11 @@ namespace Tec_Assign.Controllers
 {
     public class DeviceController : Controller
     {
-        DeviceServices deviceServices = new DeviceServices();
+        DeviceServices deviceServices;
+        public DeviceController(DataContext _dataContext)
+        {
+            deviceServices = new DeviceServices(_dataContext);
+        }
         public ActionResult Index()
         {
             return View(deviceServices.listDevices());

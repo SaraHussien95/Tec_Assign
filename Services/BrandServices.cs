@@ -10,8 +10,7 @@ namespace Tec_Assign.Services
     public class BrandServices
     {
         public Brand_DS brand_DS;
-        public DataContext dataContext;
-        public BrandServices()
+        public BrandServices( DataContext dataContext)
         {
             brand_DS = new Brand_DS(dataContext);
         }

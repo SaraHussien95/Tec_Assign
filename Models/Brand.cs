@@ -13,7 +13,9 @@ namespace Tec_Assign.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { set; get; }
         public string Name { set; get; }
-        public int categoryId { set; get; }
+        public int? categoryId { set; get; }
+        [ForeignKey("categoryId")]
         public Category category { set; get; }
+        public List<Product> products { set; get; }
     }
 }
